@@ -4,6 +4,14 @@
 # Log file
 *.log
 
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+
 # BlueJ files
 *.ctxt
 
@@ -21,3 +29,11 @@
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+
+*versionsBackup
+/settings.xml
+/assets/
+/.mvn/
+/HELP.md
+/mvnw
+*.DS_Store

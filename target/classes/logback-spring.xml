@@ -1,0 +1,48 @@
+<configuration scan="true">
+  <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
+
+  <property resource="application.properties"/>
+
+  <springProperty scope="context" name="applicationName" source="spring.application.name"/>
+
+  <property name="CONSOLE_LOG_PATTERN"
+    value="%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr(${LOG_LEVEL_PATTERN:-%5p}) %clr(${PID:- }){magenta} %clr(---){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}"/>
+
+  <property name="FILE_LOG_PATTERN"
+    value="[%level] %date{YYYY-MM-dd HH:mm:ss.SSS} [${applicationName}][%X{X-B3-TraceId:-}] [%thread] %logger{10} %msg%n" />
+
+  <appender class="ch.qos.logback.core.ConsoleAppender" name="APPLICATION">
+    <encoder>
+      <pattern>${FILE_LOG_PATTERN}</pattern>
+      <charset>utf8</charset>
+    </encoder>
+  </appender>
+
+  <appender class="ch.qos.logback.core.ConsoleAppender" name="SPRING">
+
+    <encoder>
+      <pattern>${FILE_LOG_PATTERN}</pattern>
+      <charset>utf8</charset>
+    </encoder>
+  </appender>
+
+  <appender class="ch.qos.logback.core.ConsoleAppender" name="STDOUT">
+    <encoder>
+      <pattern>${CONSOLE_LOG_PATTERN}</pattern>
+    </encoder>
+  </appender>
+
+  <logger name="demo.java.docker.layermode" level="DEBUG" additivity="false">
+    <appender-ref ref="APPLICATION"/>
+  </logger>
+  <logger name="org.springframework" level="INFO" additivity="false">
+    <appender-ref ref="SPRING" />
+  </logger>
+
+
+
+  <root level="INFO">
+    <appender-ref ref="STDOUT"/>
+    <appender-ref ref="SPRING" />
+  </root>
+</configuration>

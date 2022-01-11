@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="maven-antrun-" default="main">
+  <target name="main">
+    <copy file="/Users/yonathan/Documents/myProject/DEMO-JAVA-DOCKER/target/layer-mode-0.0.1-SNAPSHOT.jar" toFile="/Users/yonathan/Documents/myProject/DEMO-JAVA-DOCKER/target/application.jar" overwrite="true" />
+  </target>
+</project>
